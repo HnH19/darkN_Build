@@ -434,17 +434,17 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
             }
             if (alphabet) {
                 char labelstr[4096] = { 0 };
-                strcat(labelstr, names[selected_detections[i].best_class]);
+                //strcat(labelstr, names[selected_detections[i].best_class]); CHANGE
                 char prob_str[10];
                 sprintf(prob_str, ": %.2f", selected_detections[i].det.prob[selected_detections[i].best_class]);
                 strcat(labelstr, prob_str);
                 int j;
-                for (j = 0; j < classes; ++j) {
-                    if (selected_detections[i].det.prob[j] > thresh && j != selected_detections[i].best_class) {
-                        strcat(labelstr, ", ");
-                        strcat(labelstr, names[j]);
-                    }
-                }
+                //for (j = 0; j < classes; ++j) {
+                //    if (selected_detections[i].det.prob[j] > thresh && j != selected_detections[i].best_class) {
+                //        strcat(labelstr, ", ");
+                //        strcat(labelstr, names[j]);
+                //    }
+                //}
                 image label = get_label_v3(alphabet, labelstr, (im.h*.02));
                 //draw_label(im, top + width, left, label, rgb);
                 draw_weighted_label(im, top + width, left, label, rgb, 0.7);
